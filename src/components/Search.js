@@ -1,4 +1,6 @@
 import {searchInputEl,spinnerSearchEl,jobListSearchEl, searchFormEl,errorEl,errorTextEl,numberEl} from "../common.js";
+import Error from "./Error.js";
+import Spinner from "./Spinner.js";
 const submitHandler =(event)=>{
     event.preventDefault();
     const searchText= searchInputEl.value;
@@ -6,15 +8,14 @@ const submitHandler =(event)=>{
     const patternMatch = forbiddenPattern.test(searchText);
                              
     if(patternMatch){
-        errorTextEl.textContent = "Your search may not content python.";
-        errorEl.classList.add('error--visible');
-        setTimeout(()=>{
-            errorEl.classList.remove('error--visible');
-        },2000);
+
+            Error("Your search may not number.");
+
+        return;
     }
     searchInputEl.blur();
 
-    spinnerSearchEl.classList.add('spinner--visible');
+    Spinner('search');
     jobListSearchEl.textContent = '';
     fetch(`https://bytegrad.com/course-assets/js/2/api/jobs?search=${searchText}`).then(response=>{
        
@@ -27,7 +28,7 @@ const submitHandler =(event)=>{
         console.log(data);
         const {jobItems} = data;
       
-        spinnerSearchEl.classList.remove('spinner--visible');
+        Spinner('search');
         numberEl.textContent = jobItems.length;
 
 jobItems.slice(0,7).forEach(jobItem=>{
