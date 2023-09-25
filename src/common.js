@@ -1,0 +1,10 @@
+export const searchFormEl = document.querySelector('.search');
+export const searchInputEl = document.querySelector('.search__input');
+export const errorEl = document.querySelector('.error');
+export const errorTextEl = document.querySelector('.error__text');
+export const spinnerSearchEl =document.querySelector('.spinner--search');
+export const spinnerJobDetailsEl =document.querySelector('.spinner--job-details');
+export const numberEl =document.querySelector('.count__number');
+export const jobListSearchEl = document.querySelector('.job-list--search');
+export const jobItemLink = document.querySelector('.job-item__link');
+export const jobDetailsContentEl=document.querySelector('.job-details__content');
